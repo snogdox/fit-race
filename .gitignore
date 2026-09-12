@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+extracted_frames/
+showcase1/
+showcase2/
+*.zip
