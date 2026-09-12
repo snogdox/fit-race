@@ -177,11 +177,11 @@ function onScroll() {
  */
 function updateUI() {
   const roundedFrame = Math.round(state.currentFrame);
-  frameScrubber.value = roundedFrame;
-  currentFrameText.innerText = `FRAME ${String(roundedFrame).padStart(3, '0')} / ${TOTAL_FRAMES}`;
+  if (frameScrubber) frameScrubber.value = roundedFrame;
+  if (currentFrameText) currentFrameText.innerText = `FRAME ${String(roundedFrame).padStart(3, '0')} / ${TOTAL_FRAMES}`;
   
   const percent = Math.floor((roundedFrame / TOTAL_FRAMES) * 100);
-  scrollPercentText.innerText = `${percent}%`;
+  if (scrollPercentText) scrollPercentText.innerText = `${percent}%`;
 }
 
 /**
@@ -400,9 +400,9 @@ function initEvents() {
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  playPauseBtn.addEventListener('click', togglePlayPause);
-  speedBtn.addEventListener('click', cycleSpeed);
-  frameScrubber.addEventListener('input', onScrubberInput);
+  if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayPause);
+  if (speedBtn) speedBtn.addEventListener('click', cycleSpeed);
+  if (frameScrubber) frameScrubber.addEventListener('input', onScrubberInput);
 
   audioToggle.addEventListener('click', toggleAmbientAudio);
 
